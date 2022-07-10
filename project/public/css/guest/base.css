@@ -1,0 +1,81 @@
+
+/* メインコンテンツ */
+.main-contents {
+    padding-top: 60px;
+    border: solid 2px rgb(159, 137, 255);
+    border-radius: 8px;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 180px;
+    background-color: #fff;
+    text-align: center;
+}
+.title {
+    text-align: center;
+    font-family: fantasy;
+    font-size: 50px;
+    margin-bottom: 60px;
+}
+.login-title,
+.register-title {
+    text-align: center;
+    font-family: fantasy;
+    font-size: 40px;
+    margin-bottom: 60px;
+}
+/* ボタン */
+.btns {
+    text-align: center;
+}
+.login, .register {
+    display: block;
+    font-size: 20px;
+    background-color: rgb(110, 57, 255);
+    width: 250px;
+    border: solid 2px rgb(110, 57, 255);
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 15px 0;
+    color: #fff;
+    margin-bottom: 50px;
+    box-shadow: 0 5px 0 rgb(71, 23, 204);
+}
+.login:hover, .register:hover {
+    opacity: .7;
+}
+/* 戻るリンク */
+.back {
+    display: block;
+    font-size: 18px;
+    text-decoration: underline;
+    color: purple;
+    margin-bottom: 30px;
+}
+.back:hover {
+    opacity: .6;
+}
+/* フォーム */
+.login-form input,
+.register-form input
+{
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    font-size: 18px;
+    width: 300px;
+}
+/* エラーメッセージ */
+.error {
+    font-size: 12px;
+    color: red;
+}
+
+/* エラー画面 */
+.error_title {
+    font-size: 30px;
+    margin-bottom: 60px;
+    line-height: 40px;
+}
+
+

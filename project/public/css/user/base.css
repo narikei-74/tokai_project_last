@@ -1,0 +1,264 @@
+/* 全体 */
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+}
+a {
+    color: purple;
+    text-decoration: underline;
+}
+
+/* ヘッダー */
+header {
+    position: fixed;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(159, 137, 255);
+    border-bottom: solid 5px rgb(110, 57, 255);
+    justify-content: space-between;
+}
+header .header_logo {
+    font-size: 18px;
+    font-family: fantasy;
+    margin-top: 20px;
+    margin-left: 100px;
+}
+header .header_contents {
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+    width: 250px;
+    justify-content: space-between;
+}
+header .user_info {
+    display: flex;
+    align-items: center;
+}
+.user_info .user_id {
+    margin-left: 4px;
+    font-size: 18px;
+}
+.header_contents .logout {
+    margin-top: 2px;
+    color: #000;
+    text-decoration: none;
+}
+.header_contents .logout:hover {
+    opacity: .6;
+}
+.header_contents .header_decoration {
+    cursor: default;
+}
+
+
+
+/* メインコンテンツ */
+.main-contents {
+    height: 100%;
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+.inner {
+    width: 80%;
+    margin: 0 auto;
+}
+.main-contents h2 {
+    font-size: 30px;
+    margin: 50px 0;
+}
+.main-contents p {
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+.main-contents ul {
+   list-style-type: disc;
+   padding-left: 20px;
+}
+.main-contents li {
+    margin-top: 20px;
+}
+.main-contents li a {
+    color: purple;
+    text-decoration: underline;
+}
+.main-contents li a:hover {
+    opacity: .6;
+}
+
+/* 左サイドコンテンツ */
+.left-side-contents {
+    margin-right: 50px;
+    padding-right: 55px;
+    padding-left: 45px;
+    padding-top: 90px;
+    height: 100%;
+    background-color: #333;
+    color: #efefef;
+}
+.left-side-contents p a,
+.left-side-contents ul li a {
+    color: #efefef;
+}
+.all a {
+    text-decoration: none;
+}
+.left-side-contents .all a:hover {
+    opacity: .6;
+}
+.left-side-contents .favorite {
+    margin-top: 45px;
+}
+
+/* 右サイドコンテンツ */
+/* topページ */
+.right-side-contents {
+    margin-left: 60px;
+    margin-right: 30px;
+}
+.categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 100px;
+}
+
+
+/* themeページ */
+/* お気に入りボタン */
+.favorite_btn {
+    display: flex;
+    margin: 50px 0;
+}
+.favorite_btn h2 {
+    margin: 0;
+}
+.favorite_btn button {
+    color: #fff;
+    width: 150px;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: 80px;
+    font-size: 20px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: rgb(110, 57, 255);
+    border: solid 2px rgb(110, 57, 255);
+    box-shadow: 0 5px 0 rgb(71, 23, 204);
+}
+.favorite_btn button.liked {
+    background-color: #777;
+    border: solid 2px #777;
+    box-shadow: 0 5px 0 #333;
+
+}
+.favorite_btn button:hover {
+    opacity: .7;
+}
+/* 検索フォーム */
+.search {
+    margin-bottom: 80px;
+}
+.search input {
+    width: 80%;
+    height: 32px;
+    font-size: 18px;
+}
+.search button {
+    width: 100px;
+    height: 32px;
+    cursor: pointer;
+}
+/* テーブル */
+.add_table, .cheat_sheet_table {
+    margin-top: 40px;
+    margin-right: 80px;
+}
+.add_table table,
+.cheat_sheet_table table
+{
+    width: 100%;
+    border: 1px solid #000;
+}
+.add_table {
+    margin-bottom: 80px;
+}
+table input {
+    font-size: 18px;
+}
+.add_table th,
+.add_table td,
+.cheat_sheet_table th,
+.cheat_sheet_table td
+{
+    border: 1px solid #000;
+    padding: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+}
+.add_table th,
+.cheat_sheet_table th
+{
+    font-weight: bold;
+    background-color: #eee;
+}
+.add_table td,
+.cheat_sheet_table td
+{
+    text-align: center;
+}
+.subject {
+    width: 20%;
+    overflow-wrap: normal;
+}
+.explanation {
+    width: 30%;
+    overflow-wrap: normal;
+}
+.url {
+    width: 30%;
+    word-break: break-all;
+}
+.url a:hover {
+    opacity: .6;
+}
+.update {
+    width: 10%;
+}
+.update:hover {
+    opacity: .6;
+}
+.delete {
+    width: 10%;
+}
+.delete:hover {
+    opacity: .6;
+}
+/* ボタン */
+.add_table .add_btn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 130px;
+    padding: 4px;
+    color: #fff;
+    background-color: rgb(110, 57, 255);
+    border: solid 2px rgb(110, 57, 255);
+    box-shadow: 0 5px 0 rgb(71, 23, 204);
+    border-radius: 4px;
+    cursor: pointer;
+}
+.add_table .add_btn:hover {
+    opacity: .7;
+}
+/* エラーメッセージ */
+.error {
+    display: block;
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+}
