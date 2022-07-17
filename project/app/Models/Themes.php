@@ -34,4 +34,8 @@ class Themes extends Model
         $theme->favorite = 0;
         $theme->save();
     }
+
+    public static function _delete_theme($theme_id) {
+        Themes::where('id', $theme_id)->delete();
+    }
 }

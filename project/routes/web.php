@@ -29,6 +29,7 @@ Route::get('/logout', [Guest\LoginController::class, 'logout'])->middleware('aut
 
 Route::get('/top', [User\TopController::class, 'index'])->middleware('auth')->name('show_top');
 Route::post('/top/create', [User\TopController::class, 'create_theme'])->middleware('auth')->name('create_theme');
+Route::post('/top/delete', [User\TopController::class, 'delete_theme'])->middleware('auth')->name('delete_theme');
 
 Route::get('/theme/{theme}', [User\ThemeController::class, 'index'])->middleware('auth')->name('show_theme');
 Route::post('/theme/{theme}/add', [User\ThemeController::class, 'add'])->middleware('auth')->name('add_record');

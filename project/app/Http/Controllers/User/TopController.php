@@ -20,4 +20,9 @@ class TopController extends Controller
         Themes::_create_theme($request->theme_name);
         return redirect(route('show_top'));
     }
+
+    public function delete_theme(Request $request) {
+        Themes::_delete_theme($request->theme_id);
+        return redirect(route('show_top'));
+    }
 }
