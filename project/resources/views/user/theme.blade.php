@@ -48,6 +48,22 @@ MCS - {{ $current_theme->name }}
     <button class="add_btn">追加</button>
 </form>
 
+<div class="csv_field">
+    <button style="cursor: pointer;" onclick="window.location.href='{{ route('export_csv', $current_theme->id) }}'">CSVエクスポート</button>
+    <button style="cursor: pointer;" class="import_button">CSVインポート</button>
+    <div class="import_csv" style="display: none;">
+        <form action="{{ route('import_csv') }}" method="post">
+            @csrf
+            <input type="hidden" name="theme_id" value="{{ $current_theme->id }}">
+            <input type="file" accept=".csv">
+            <div>
+                <button class="cancel_button" type="button">キャンセル</button>
+                <button>インポート</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="cheat_sheet_table">
     <table>
     <thead>
@@ -70,5 +86,49 @@ MCS - {{ $current_theme->name }}
     @endforeach
     </table>
 </div>
+
+<script>
+    $('.import_button').on('click', function () {
+        $('.import_csv').show();
+    });
+    $('.cancel_button').on('click', function () {
+        $('.import_csv').hide();
+    });
+
+</script>
+
+<style>
+    html {
+        height: 100%;
+        width: 100%;
+    }
+    .import_csv {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, .5);
+        z-index: 999;
+    }
+    .import_csv form {
+        background-color: #fff;
+        width: 400px;
+        margin: 0 auto;
+        margin-top: 300px;
+        padding: 30px;
+        text-align: center;
+        border-radius: 4px;
+    }
+    .import_csv form button {
+        display: inline-block;
+        width: 100px;
+        height: 30px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 40px;
+        cursor: pointer;
+    }
+</style>
 
 @endsection

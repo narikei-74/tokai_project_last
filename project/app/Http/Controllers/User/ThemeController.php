@@ -64,4 +64,32 @@ class ThemeController extends Controller
         $data['records'] = $presenter->search_record($request, $theme_id);
         return view('user.theme', $data);
     }
+
+    public function export_csv($theme_id) {
+        $file_path = "./../../../..".'/tmp/'.date('YmdHis').'-'.mt_rand().'.csv';
+        $fp = fopen($file_path, 'w');
+
+        $header = ['comment', 'url'];
+        fputcsv($fp, $header);
+
+        $data = Cheatsheet::where('theme_id', $theme_id)->get()->toArray();
+        foreach ($data as $array) {
+            $body = [];
+            $body['comment'] = $array['explanation'];
+            $body['url'] = $array['url'];
+            mb_convert_variables('SJIS', 'UTF-8', $body);
+
+            fputcsv($fp, $body);
+        }
+        fclose($fp);
+
+        $file_name = date('YmdHis').'-'.$theme_id.'.csv';
+
+        header('Content-Type: application/octet-stream');
+
+        header('Content-Disposition: attachment; filename=' . $file_name);
+        header('Content-Length: ' . filesize($file_path));
+        header('Content-Transfer-Encoding: binary');
+        readfile($file_path);
+    }
 }

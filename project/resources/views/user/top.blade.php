@@ -55,7 +55,7 @@ MCS - top
         opacity: .4;
     }
     .theme_delete {
-        position: absolute;
+        position: fixed;
         top: 0;
         bottom: 0;
         left: 0;

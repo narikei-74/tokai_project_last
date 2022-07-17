@@ -41,6 +41,9 @@ Route::post('/theme/{theme}/search', [User\ThemeController::class, 'search'])->m
 
 Route::post('/theme/{theme}/favorite', [User\ThemeController::class, 'favorite'])->middleware('auth')->name('favorite_theme');
 
+Route::get('/theme/{theme}/export', [User\ThemeController::class, 'export_csv'])->middleware('auth')->name('export_csv');
+Route::post('/theme/import', [User\ThemeController::class, 'import_csv'])->middleware('auth')->name('import_csv');
+
 
 
 
