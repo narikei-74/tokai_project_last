@@ -51,11 +51,12 @@ MCS - {{ $current_theme->name }}
 <div class="csv_field">
     <button style="cursor: pointer;" onclick="window.location.href='{{ route('export_csv', $current_theme->id) }}'">CSVエクスポート</button>
     <button style="cursor: pointer;" class="import_button">CSVインポート</button>
+    <span style="display: inline-block; margin-left: 8px;" class="error">{{ @$csv_error}}</span>
     <div class="import_csv" style="display: none;">
-        <form action="{{ route('import_csv') }}" method="post">
+        <form action="{{ route('import_csv') }}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="theme_id" value="{{ $current_theme->id }}">
-            <input type="file" accept=".csv">
+            <input type="file" accept=".csv" name="csv">
             <div>
                 <button class="cancel_button" type="button">キャンセル</button>
                 <button>インポート</button>

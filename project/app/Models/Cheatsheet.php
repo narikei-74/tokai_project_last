@@ -23,8 +23,8 @@ class Cheatsheet extends Model
         $cheat_sheet = new Cheatsheet();
         $cheat_sheet->theme_id = $theme_id;
         $cheat_sheet->user_id = Auth::user()->user_id;
-        $cheat_sheet->explanation = $request->explanation;
-        $cheat_sheet->url = $request->url;
+        $cheat_sheet->explanation = $request['explanation'];
+        $cheat_sheet->url = $request['url'];
         $cheat_sheet->save();
     }
 

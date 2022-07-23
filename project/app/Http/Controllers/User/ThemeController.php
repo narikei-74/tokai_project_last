@@ -16,6 +16,8 @@ class ThemeController extends Controller
         $data['user_id'] = Auth::user()->user_id;
         $data['themes'] = $presenter->add_themes();
         $data['records'] = $presenter->add_records($theme_id);
+        $data['csv_error'] = session()->get('csv_error');
+        session()->forget('csv_error');
 
         return view('user.theme', $data);
     }
@@ -91,5 +93,37 @@ class ThemeController extends Controller
         header('Content-Length: ' . filesize($file_path));
         header('Content-Transfer-Encoding: binary');
         readfile($file_path);
+    }
+
+    public function import_csv(Request $request) {
+        if (!$request->hasFile('csv')) {
+            session()->put(['csv_error' => 'ファイルを選択してください。']);
+            return redirect(route('show_theme', $request['theme_id']));
+        }
+
+        $file_path = $request->file('csv')->path();
+        $file = new \SplFileObject($file_path);
+        $file->setFlags(
+            \SplFileObject::READ_CSV
+        );
+
+        foreach ($file as $key => $line) {
+            if ($key == 0) {
+                continue;
+            }
+
+            if (!@$line[0] || !@$line[1]) {
+                continue;
+            }
+
+            $line = mb_convert_encoding($line, 'UTF-8', 'SJIS-win');
+            $data = [];
+            $data['explanation'] = $line[0];
+            $data['url'] = $line[1];
+
+            Cheatsheet::_create($data ,$request['theme_id']);
+        }
+
+        return redirect(route('show_theme', $request['theme_id']));
     }
 }
