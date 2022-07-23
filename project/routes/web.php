@@ -16,10 +16,14 @@ use App\Http\Controllers\User;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.index');
-})->middleware('guest')->name('home');
+Route::get('/', [Guest\HomeController::class, 'index'])->middleware('guest')->name('home');
+Route::get('/public_theme/{theme}', [Guest\HomeController::class, 'theme'])->middleware('guest')->name('public_theme');
+Route::post('/public_theme/{theme}/search', [Guest\HomeController::class, 'search'])->middleware('guest')->name('public_search_record');
+Route::get('/public_theme/{theme}/export', [Guest\HomeController::class, 'export_csv'])->middleware('guest')->name('public_export_csv');
 
+Route::get('/private', function() {
+    return view('guest.private');
+})->middleware('guest')->name('show_private');
 Route::get('/register', [Guest\RegisterController::class, 'create'])->middleware('guest')->name('show_register');
 Route::post('/register', [Guest\RegisterController::class, 'store'])->middleware('guest')->name('register');
 

@@ -57,9 +57,9 @@ class ThemeController extends Controller
     }
 
     public function search($theme_id, Request $request, ThemePresenter $presenter) {
-        $request->validate([
-            'keywords' => 'required'
-        ]);
+        if ($request['keywords'] == "") {
+            return redirect(route('show_theme', $theme_id));
+        }
         $data['current_theme'] = $presenter->add_theme($theme_id);
         $data['user_id'] = Auth::user()->user_id;
         $data['themes'] = $presenter->add_themes();

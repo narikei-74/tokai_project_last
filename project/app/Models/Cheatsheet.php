@@ -59,4 +59,20 @@ class Cheatsheet extends Model
         }
         return $records;
     }
+
+    public static function _search_public($request, $theme_id) {
+        $keywords = $request->keywords;
+        $keywords = preg_split('/(　| )+/', $keywords);
+        $records = [];
+        foreach ($keywords as $key => $keyword) {
+            if ($keyword != '') {
+                $record = Cheatsheet::where('theme_id', $theme_id)->where('explanation', 'LIKE', '%'.$keyword.'%')->get()->toArray();
+                $record = reset($record);
+                if ($record) {
+                    $records[$key] = $record;
+                }
+            }
+        }
+        return $records;
+    }
 }

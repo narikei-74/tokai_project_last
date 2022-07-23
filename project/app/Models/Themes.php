@@ -38,4 +38,9 @@ class Themes extends Model
     public static function _delete_theme($theme_id) {
         Themes::where('id', $theme_id)->delete();
     }
+
+    public static function _get_public_theme() {
+        $themes = Themes::where('public', 1)->get()->toArray();
+        return $themes;
+    }
 }

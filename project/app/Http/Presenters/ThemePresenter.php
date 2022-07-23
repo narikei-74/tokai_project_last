@@ -14,8 +14,18 @@ class ThemePresenter extends Presenter
         return $cheat_sheet;
     }
 
+    public function add_public_records($theme_id) {
+        $cheat_sheet = Cheatsheet::where('theme_id', $theme_id)->orderBy('id', 'desc')->get();
+        return $cheat_sheet;
+    }
+
     public function add_theme($theme_id) {
         $theme = Themes::where('user_id', Auth::user()->user_id)->where('id', $theme_id)->get()->first();
+        return $theme;
+    }
+
+    public function add_public_theme($theme_id) {
+        $theme = Themes::where('id', $theme_id)->get()->first();
         return $theme;
     }
 
@@ -27,6 +37,11 @@ class ThemePresenter extends Presenter
 
     public function search_record($request, $theme_id) {
         $records = Cheatsheet::_search($request, $theme_id);
+        return $records;
+    }
+
+    public function search_public_record($request, $theme_id) {
+        $records = Cheatsheet::_search_public($request, $theme_id);
         return $records;
     }
 
