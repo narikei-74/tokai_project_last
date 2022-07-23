@@ -5,7 +5,7 @@ MCS - top
 @endsection
 
 @section('content')
-<h2>カテゴリー</h2>
+<h2>チートシート一覧</h2>
 <form action="{{ route('create_theme') }}" method="post">
     {{ csrf_field() }}
     <input type="text" name="theme_name">

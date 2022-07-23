@@ -5,7 +5,7 @@ MCS - home
 @endsection
 
 @section('content')
-<h2>公開カテゴリー</h2>
+<h2>公開チートシート一覧</h2>
 <ul class="theme_grid">
     @if (@$themes)
         @foreach ($themes as $theme)
@@ -17,6 +17,10 @@ MCS - home
 </ul>
 
 <style>
+    .theme_grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        font-size: 22px;
+    }
     .theme_delete_button {
         display: inline-block;
         position: relative;
