@@ -21,7 +21,7 @@
                 person
                 </span>
                 <p class="user_id">
-                    ゲストさん
+                    ゲスト
                 </p>
             </div>
             <span class="header_decoration">|</span>
