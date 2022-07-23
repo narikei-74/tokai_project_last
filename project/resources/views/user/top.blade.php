@@ -10,6 +10,9 @@ MCS - top
     {{ csrf_field() }}
     <input type="text" name="theme_name">
     <button>新規登録</button>
+    @error('theme_name')
+    <span class="error">{{ $message }}</span>
+    @enderror
 </form>
 <ul class="theme_grid">
     @if (@$themes)

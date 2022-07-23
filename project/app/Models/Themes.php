@@ -43,4 +43,16 @@ class Themes extends Model
         $themes = Themes::where('public', 1)->get()->toArray();
         return $themes;
     }
+
+    public static function _do_public($theme_id) {
+        $themes = Themes::where('id', $theme_id)->first();
+        $themes->public = 1;
+        $themes->save();
+    }
+
+    public static function _do_private($theme_id) {
+        $themes = Themes::where('id', $theme_id)->first();
+        $themes->public = 0;
+        $themes->save();
+    }
 }

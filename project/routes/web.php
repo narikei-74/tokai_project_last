@@ -48,6 +48,9 @@ Route::post('/theme/{theme}/favorite', [User\ThemeController::class, 'favorite']
 Route::get('/theme/{theme}/export', [User\ThemeController::class, 'export_csv'])->middleware('auth')->name('export_csv');
 Route::post('/theme/import', [User\ThemeController::class, 'import_csv'])->middleware('auth')->name('import_csv');
 
+Route::get('/theme/{theme}/public', [User\ThemeController::class, 'do_public'])->middleware('auth')->name('do_public');
+Route::get('/theme/{theme}/private', [User\ThemeController::class, 'do_private'])->middleware('auth')->name('do_private');
+
 
 
 

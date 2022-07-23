@@ -17,6 +17,9 @@ class TopController extends Controller
     }
 
     public function create_theme(Request $request) {
+        $request->validate([
+            'theme_name' => 'required'
+        ]);
         Themes::_create_theme($request->theme_name);
         return redirect(route('show_top'));
     }

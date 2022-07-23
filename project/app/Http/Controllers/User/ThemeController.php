@@ -126,4 +126,15 @@ class ThemeController extends Controller
 
         return redirect(route('show_theme', $request['theme_id']));
     }
+
+
+    public function do_public($theme_id) {
+        Themes::_do_public($theme_id);
+        return redirect(route('show_theme', $theme_id));
+    }
+
+    public function do_private($theme_id) {
+        Themes::_do_private($theme_id);
+        return redirect(route('show_theme', $theme_id));
+    }
 }

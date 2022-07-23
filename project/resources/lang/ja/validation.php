@@ -26,6 +26,10 @@ return [
 
         'explanation' => [
             'required' => '必ず入力してください。',
+        ],
+
+        'theme_name' => [
+            'required' => 'カテゴリー名を入力してください。'
         ]
     ],
 ];

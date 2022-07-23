@@ -8,6 +8,21 @@ MCS - {{ $current_theme->name }}
 <form class="favorite_btn" action="{{ route('favorite_theme', $current_theme->id) }}" method="POST">
     {{ csrf_field() }}
     <a href="{{ route('show_theme', $current_theme->id) }}"><h2>{{ $current_theme->name }}</h2></a>
+    @if ($current_theme->public == 1)
+        <a class="private_button" href="{{ route('do_private', $current_theme->id) }}">
+            <span class="material-symbols-outlined private_icon">
+                lock
+            </span>
+            非公開にする
+        </a>
+    @else
+        <a class="public_button" href="{{ route('do_public', $current_theme->id) }}">
+            <span class="material-symbols-outlined public_icon">
+                lock_open
+            </span>
+            公開にする
+        </a>
+    @endif
     <input type="hidden" name="favorite" value="<?= $current_theme->favorite == '1' ? '0' : '1'; ?>">
     <button class="<?= $current_theme->favorite == '1' ? 'liked' : ''; ?>">
         <?= $current_theme->favorite == '1' ? 'お気に入りを解除' : 'お気に入りに登録'; ?>
@@ -129,6 +144,44 @@ MCS - {{ $current_theme->name }}
         margin-right: 5px;
         margin-top: 40px;
         cursor: pointer;
+    }
+    .main-contents .public_button {
+        display: inline-block;
+        margin-left: 20px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 4px;
+        padding: 0 5px;
+        padding-bottom: 8px;
+        font-size: 10px;
+        background-color: #333;
+        box-shadow: 0 3px 0 #000;
+    }
+    .main-contents .private_button:hover {
+        opacity: .6;
+    }
+    .main-contents .private_button {
+        display: inline-block;
+        margin-left: 20px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 4px;
+        padding: 0 5px;
+        padding-bottom: 8px;
+        font-size: 10px;
+        background-color: #333;
+        box-shadow: 0 3px 0 #000;
+    }
+    .main-contents .private_button:hover {
+        opacity: .6;
+    }
+    .private_icon {
+        position: relative;
+        top: 5px;
+    }
+    .public_icon {
+        position: relative;
+        top: 5px;
     }
 </style>
 
